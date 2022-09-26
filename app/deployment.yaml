@@ -14,17 +14,32 @@ spec:
     spec:
       containers:
         - name: node-echo-server
+          imagePullPolicy: Always
           env:
             - name: CURRENT_NODE_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          image: needkk/node-echo:v1.0.0
+          image: needkk/node-echo:v2.0.1
           resources:
             limits:
               memory: "128Mi"
               cpu: "500m"
           ports:
             - containerPort: 80
-
-
+      imagePullSecrets:
+        - name: regsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-echo-svc
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      nodePort: 30080
+      port: 80
+      targetPort: 80
+  selector:
+    app: node-echo-server
