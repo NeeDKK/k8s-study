@@ -109,6 +109,24 @@ kind create cluster --config=kind-config.yaml
 
 ![img.png](img/img-kind.png)
 
+## 3.Linux安装
+### 3.1.前期准备（Linux版）
+> 1.安装docker
+> 
+> 2.安装kubectl(https://kubernetes.io/zh/docs/tasks/tools/install-kubectl-linux/)
+> 
+> --- 2.1 curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl
+> 
+> --- 2.2 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+> 
+> 3.安装kind(https://kind.sigs.k8s.io/docs/user/quick-start/)
+> 
+> --- 3.1 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.0/kind-linux-amd64
+> 
+>--- 3.2 chmod +x ./kind
+> 
+>--- 3.3 mv ./kind /some-dir-in-your-PATH/kind
+
 ## 3.执行manifest文件
 
 ```shell
